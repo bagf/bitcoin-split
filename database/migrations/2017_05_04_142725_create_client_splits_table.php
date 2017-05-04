@@ -15,12 +15,12 @@ class CreateClientSplitsTable extends Migration
         Schema::create('client_splits', function (Blueprint $table) {
             $table->increments('id');
             $table->string('wallet_address');
-            $table->float('wallet_value')->default(0);
+            $table->float('wallet_value', 20, 10)->default(0);
             $table->string('client_address');
             $table->float('client_percent');
             $table->float('owner_percent');
-            $table->float('float')->default(0);
-            $table->enum('payout_frequency', ['WEEKLY', 'MONHTLY']);
+            $table->float('float', 20, 10)->default(0);
+            $table->enum('payout_frequency', ['WEEKLY', 'MONTHLY']);
             $table->timestamps();
         });
     }

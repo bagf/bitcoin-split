@@ -41,7 +41,7 @@ class UserController extends Controller
             'password' => 'confirmed',
         ]);
 
-        $user->fill($request->only([ 'name', 'email', ]));
+        $user->fill($request->only([ 'name', 'email', 'wallet_addr', ]));
         if ($request->get('password')."" != '') {
             $user->password = bcrypt($request->get('password'));
         }
@@ -60,7 +60,7 @@ class UserController extends Controller
             'password' => 'required|confirmed',
         ]);
 
-        $user = new User($request->only([ 'name', 'email', ]));
+        $user = new User($request->only([ 'name', 'email', 'wallet_addr', ]));
         $user->password = bcrypt($request->get('password'));
 
         $user->save();

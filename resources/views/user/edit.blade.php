@@ -36,6 +36,13 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-4 control-label">Wallet Address</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="wallet_addr" value="{{ old('wallet_addr', $user->wallet_addr) }}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-md-4 control-label">Password</label>
                             <div class="col-md-6">
                                 <input type="password" class="form-control" name="password">
@@ -59,9 +66,9 @@
                     </form>
 				</div>
 			</div>
-            
+
             <hr>
-            
+
             <div class="btn-group">
                 <a class="btn btn-link" href="{{ action('Auth\UserController@index') }}">Back</a>
             </div>
@@ -77,7 +84,7 @@
                     {!! csrf_field() !!}
                 </form>
             </div>
-            
+
             <hr>
 		</div>
 	</div>

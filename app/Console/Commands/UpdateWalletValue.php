@@ -55,8 +55,8 @@ class UpdateWalletValue extends Command
         });
     }
 
-    protected function getBalance($addresss)
+    protected function getBalance($address)
     {
-        return sprintf(config('electrum.check_balance'), $addresss);
+        return sprintf(config('electrum.check_balance'), $address."");
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientSplit extends Model
 {
-    protected $fillable = ['wallet_address', 'wallet_value', 'client_address', 'client_percent', 'owner_percent', 'float'];
+    protected $fillable = ['wallet_address', 'wallet_value', 'client_address', 'client_percent', 'owner_percent', 'float', 'payout_frequency'];
 
     public function owner()
     {
@@ -38,7 +38,7 @@ class ClientSplit extends Model
         $attributes['client_value'] = $cVal;
         $attributes['owner_value'] = $oVal;
 
-        $this->transactions()->create($attributes);
+        return $this->transactions()->create($attributes);
     }
 
     private function calcWalletPercent($percent)

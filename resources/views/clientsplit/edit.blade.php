@@ -52,7 +52,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Float Balance</label>
                             <div class="col-md-6">
-                                <input type="number" class="form-control" name="float" value="{{ old('float', $clientSplit->float) }}" required="required">
+                                <input type="number" class="form-control" name="float" step="0.0000000001" value="{{ old('float', $clientSplit->float) }}" required="required">
                                 <span class="help-block">Maintain this balance when redrawing</span>
                             </div>
                         </div>
