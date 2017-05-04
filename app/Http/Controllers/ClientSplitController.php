@@ -73,7 +73,7 @@ class ClientSplitController extends Controller
 
     public function delete($clientSplit)
     {
-        lientSplit::findOrFail($clientSplit)->delete();
+        ClientSplit::findOrFail($clientSplit)->delete();
 
         return redirect()->action('ClientSplitController@index');
     }
