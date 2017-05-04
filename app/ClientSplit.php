@@ -29,7 +29,7 @@ class ClientSplit extends Model
 
         $diff = ($this->wallet_value + $this->float) - ($cVal + $oVal);
 
-        if ($diff > 0) {
+        if ($diff > 0 && $this->wallet_value > $diff) {
             $adjust = $diff / 2;
             $cVal -= $adjust;
             $oVal -= $adjust;

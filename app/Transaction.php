@@ -24,4 +24,9 @@ class Transaction extends Model
     {
         return $this->belongsTo(ClientSplit::class);
     }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
