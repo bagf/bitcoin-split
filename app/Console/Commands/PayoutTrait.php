@@ -28,13 +28,16 @@ trait PayoutTrait {
                 return $transaction;
             }
 
-dd($payments);
-//            $out = '';
-//            $return = null;
-//            exec($this->paytomany($payments), $out, $return);
-//            $string = implode("\n", $out);
-//            $transaction->command_successful = $return;
-//            $transaction->command_output = $string;
+            if (config('electrum.dryrun')) {
+                $transaction->command_successful = 1;
+            } else {
+                $out = '';
+                $return = null;
+                exec($this->paytomany($payments), $out, $return);
+                $string = implode("\n", $out);
+                $transaction->command_successful = ((is_numeric($return) && $return == 0)?1:0);
+                $transaction->command_output = $string;
+            }
             $transaction->save();
         } catch (Exception $ex) {
             $transaction->command_successful = 0;
