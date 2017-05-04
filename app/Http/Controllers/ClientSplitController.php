@@ -39,8 +39,8 @@ class ClientSplitController extends Controller
             //'name' => 'required|string|max:255',
             'wallet_address' => 'required|max:255|unique:client_splits,wallet_address,'.$clientSplit->id,
             'client_address' => 'required|max:255',
-            'client_percent' => 'required|min:0,max:'.($ownersPercent >= 100?100:(100 - $ownersPercent)),
-            'owner_percent' => 'required|min:0,max:'.($clientPercent >= 100?100:(100 - $clientPercent)),
+            'client_percent' => 'required|numeric||min:0|max:'.($ownersPercent >= 100?100:(100 - $ownersPercent)),
+            'owner_percent' => 'required|numeric||min:0|max:'.($clientPercent >= 100?100:(100 - $clientPercent)),
             'float' => 'required|numeric',
             'payout_frequency' => 'required|in:WEEKLY,MONTHLY',
         ]);
@@ -60,13 +60,13 @@ class ClientSplitController extends Controller
             //'name' => 'required|string|max:255',
             'wallet_address' => 'required|max:255|unique:client_splits',
             'client_address' => 'required|max:255',
-            'client_percent' => 'required|min:0,max:'.($ownersPercent >= 100?100:(100 - $ownersPercent)),
-            'owner_percent' => 'required|min:0,max:'.($clientPercent >= 100?100:(100 - $clientPercent)),
+            'client_percent' => 'required|numeric|min:0|max:'.($ownersPercent >= 100?100:(100 - $ownersPercent)),
+            'owner_percent' => 'required|numeric|min:0|max:'.($clientPercent >= 100?100:(100 - $clientPercent)),
             'float' => 'required|numeric',
             'payout_frequency' => 'required|in:WEEKLY,MONTHLY',
         ]);
 
-        $clientSplit = ClientSplit::create($request->all());
+        $clientSplit = auth()->user()->clientSplits()->create($request->all());
 
         return redirect()->action('ClientSplitController@view', compact('clientSplit'));
     }
