@@ -41,4 +41,9 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany(ClientSplit::class, 'owner_id');
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }
