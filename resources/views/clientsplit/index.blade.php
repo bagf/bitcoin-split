@@ -9,6 +9,7 @@
                 <thead>
                     <tr>
                         <th>Wallet Address</th>
+                        <th>Balance</th>
                         <th>Client Percent</th>
                         <th>Owner Percent</th>
                         <th>Frequency</th>
@@ -20,6 +21,7 @@
                     @foreach ($clientSplits as $clientSpit)
                     <tr>
                         <td>{{ $clientSpit->wallet_address }}</td>
+                        <td>{{ $clientSpit->wallet_value }}</td>
                         <td>{{ $clientSpit->client_percent }}</td>
                         <td>{{ $clientSpit->owner_percent }}</td>
                         <td>{{ $clientSpit->payout_frequency }}</td>
