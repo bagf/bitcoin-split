@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\UpdateWalletValue::class,
         Commands\PayoutWeekly::class,
+        Commands\PayoutMonthly::class,
     ];
 
     /**
@@ -26,6 +27,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('update:wallets')
-                 ->hourly();
+                ->hourly();
+        $schedule->command('payout:weekly')
+                ->weekly();
+        $schedule->command('payout:monthly')
+                ->monthly();
     }
 }

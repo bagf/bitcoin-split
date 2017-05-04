@@ -45,6 +45,6 @@ dd($payments);
 
     private function paytomany($payments)
     {
-        return sprintf(config('electrum.paytomany'), json_encode($payments));
+        return sprintf(config('electrum.paytomany'), escapeshellarg(json_encode($payments)));
     }
 }

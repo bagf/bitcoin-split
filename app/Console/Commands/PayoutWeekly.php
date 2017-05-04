@@ -50,7 +50,6 @@ class PayoutWeekly extends Command
             }
 
             $this->transfer($cs);
-
         });
     }
 }
