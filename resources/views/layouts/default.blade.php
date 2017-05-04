@@ -30,6 +30,7 @@
 @if(auth()->guest())
                         <li><a href="{{ action('Auth\AuthController@getLogin') }}">Login</a></li>
 @else
+                        <li><a href="{{ action('ClientSplitController@index') }}">Splits</a></li>
                         <li><a href="{{ action('Auth\UserController@index') }}">Users</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ auth()->user()->name }} <span class="caret"></span></a>

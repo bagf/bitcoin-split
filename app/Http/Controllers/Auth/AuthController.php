@@ -39,7 +39,7 @@ class AuthController extends Controller
         $this->loginPath = action('Auth\AuthController@getLogin');
         $this->redirectAfterLogout = $this->loginPath;
         $this->redirectPath = $this->loginPath;
-        $this->redirectTo = action('Auth\UserController@index');
+        $this->redirectTo = action('ClientSplitController@index');
 
         $this->middleware('guest', ['except' => ['getLogout','getLanding']]);
     }
