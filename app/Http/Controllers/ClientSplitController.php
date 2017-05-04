@@ -36,7 +36,7 @@ class ClientSplitController extends Controller
 
         $clientSplit = ClientSplit::findOrFail($clientSplit);
         $this->validate($request, [
-            'name' => 'required|string|max:255',
+            //'name' => 'required|string|max:255',
             'wallet_address' => 'required|max:255|unique:client_splits,wallet_address,'.$clientSplit->id,
             'client_address' => 'required|max:255',
             'client_percent' => 'required|min:0,max:'.($ownersPercent >= 100?100:(100 - $ownersPercent)),
@@ -57,7 +57,7 @@ class ClientSplitController extends Controller
         $ownersPercent = intval($request->get('owner_percent'));
 
         $this->validate($request, [
-            'name' => 'required|string|max:255',
+            //'name' => 'required|string|max:255',
             'wallet_address' => 'required|max:255|unique:client_splits',
             'client_address' => 'required|max:255',
             'client_percent' => 'required|min:0,max:'.($ownersPercent >= 100?100:(100 - $ownersPercent)),
